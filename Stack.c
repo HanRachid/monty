@@ -1,9 +1,11 @@
 #include "monty.h"
 #include <string.h>
 
+
 void freeStack(stack_t **stack);
 int initStack(stack_t **stack);
 int checkMode(stack_t *stack);
+
 
 /**
  * freeStack - Frees a stack.
@@ -12,15 +14,17 @@ int checkMode(stack_t *stack);
  */
 void freeStack(stack_t **stack)
 {
-	stack_t *tmp = *stack;
+    stack_t *tmp = *stack;
 
-	while (*stack)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
+
+    while (*stack)
+    {
+        tmp = (*stack)->next;
+        free(*stack);
+        *stack = tmp;
+    }
 }
+
 
 /**
  * initStack - Initialize stack with beginning
@@ -32,20 +36,25 @@ void freeStack(stack_t **stack)
  */
 int initStack(stack_t **stack)
 {
-	stack_t *s;
+    stack_t *s;
 
-	s = malloc(sizeof(stack_t));
-	if (s == NULL)
-		return (handleErrorMalloc());
 
-	s->n = STACK;
-	s->prev = NULL;
-	s->next = NULL;
+    s = malloc(sizeof(stack_t));
+    if (s == NULL)
+        return (handleErrorMalloc());
 
-	*stack = s;
 
-	return (EXIT_SUCCESS);
+    s->n = STACK;
+    s->prev = NULL;
+    s->next = NULL;
+
+
+    *stack = s;
+
+
+    return (EXIT_SUCCESS);
 }
+
 
 /**
  * checkMode - Checks if alinked list is in stack or queue mode.
@@ -58,9 +67,9 @@ int initStack(stack_t **stack)
  */
 int checkMode(stack_t *stack)
 {
-	if (stack->n == STACK)
-		return (STACK);
-	else if (stack->n == QUEUE)
-		return (QUEUE);
-	return (2);
+    if (stack->n == STACK)
+        return (STACK);
+    else if (stack->n == QUEUE)
+        return (QUEUE);
+    return (2);
 }

@@ -1,8 +1,10 @@
 #include "monty.h"
 
+
 void montyNop(stack_t **stack, unsigned int lineNum);
 void montyPchar(stack_t **stack, unsigned int lineNum);
 void montyPstr(stack_t **stack, unsigned int lineNum);
+
 
 /**
  * montyNop - Does absolutely nothing for the Monty opcode 'nop'.
@@ -11,9 +13,10 @@ void montyPstr(stack_t **stack, unsigned int lineNum);
  */
 void montyNop(stack_t **stack, unsigned int lineNum)
 {
-	(void)stack;
-	(void)lineNum;
+    (void)stack;
+    (void)lineNum;
 }
+
 
 /**
  * montyPchar - Prints the character in the top value
@@ -23,20 +26,22 @@ void montyNop(stack_t **stack, unsigned int lineNum)
  */
 void montyPchar(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL)
-	{
-		setErrorToken(handleErrorPChar(lineNum, "stack empty"));
-		return;
-	}
-	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
-	{
-		setErrorToken(handleErrorPChar(lineNum,
-									   "value out of range"));
-		return;
-	}
+    if ((*stack)->next == NULL)
+    {
+        setErrorToken(handleErrorPChar(lineNum, "stack empty"));
+        return;
+    }
+    if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
+    {
+        setErrorToken(handleErrorPChar(lineNum,
+                         "value out of range"));
+        return;
+    }
 
-	printf("%c\n", (*stack)->next->n);
+
+    printf("%c\n", (*stack)->next->n);
 }
+
 
 /**
  * montyPstr - Prints the string contained in alinked list.
@@ -45,15 +50,18 @@ void montyPchar(stack_t **stack, unsigned int lineNum)
  */
 void montyPstr(stack_t **stack, unsigned int lineNum)
 {
-	stack_t *tmp = (*stack)->next;
+    stack_t *tmp = (*stack)->next;
 
-	while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
-	{
-		printf("%c", tmp->n);
-		tmp = tmp->next;
-	}
 
-	printf("\n");
+    while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
+    {
+        printf("%c", tmp->n);
+        tmp = tmp->next;
+    }
 
-	(void)lineNum;
+
+    printf("\n");
+
+
+    (void)lineNum;
 }

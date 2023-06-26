@@ -1,10 +1,12 @@
 #include "monty.h"
 
+
 int handleErrorShortStack(unsigned int lineNum, char *op);
 int handleErrorDiv(unsigned int lineNum);
 int handleErrorPop(unsigned int lineNum);
 int handleErrorPint(unsigned int lineNum);
 int handleErrorPChar(unsigned int lineNum, char *message);
+
 
 /**
  * handleErrorPop - Prints pop error messages for empty stacks.
@@ -14,9 +16,10 @@ int handleErrorPChar(unsigned int lineNum, char *message);
  */
 int handleErrorPop(unsigned int lineNum)
 {
-	fprintf(stderr, "L%u: can't pop an empty stack\n", lineNum);
-	return (EXIT_FAILURE);
+    fprintf(stderr, "L%u: can't pop an empty stack\n", lineNum);
+    return (EXIT_FAILURE);
 }
+
 
 /**
  * handleErrorPint - Prints pint error messages for empty stacks.
@@ -26,9 +29,10 @@ int handleErrorPop(unsigned int lineNum)
  */
 int handleErrorPint(unsigned int lineNum)
 {
-	fprintf(stderr, "L%d: can't pint, stack empty\n", lineNum);
-	return (EXIT_FAILURE);
+    fprintf(stderr, "L%d: can't pint, stack empty\n", lineNum);
+    return (EXIT_FAILURE);
 }
+
 
 /**
  * handleErrorShortStack - Prints monty math function error messages
@@ -40,9 +44,10 @@ int handleErrorPint(unsigned int lineNum)
  */
 int handleErrorShortStack(unsigned int lineNum, char *op)
 {
-	fprintf(stderr, "L%u: can't %s, stack too short\n", lineNum, op);
-	return (EXIT_FAILURE);
+    fprintf(stderr, "L%u: can't %s, stack too short\n", lineNum, op);
+    return (EXIT_FAILURE);
 }
+
 
 /**
  * handleErrorDiv - Prints error messages for division by 0.
@@ -52,9 +57,10 @@ int handleErrorShortStack(unsigned int lineNum, char *op)
  */
 int handleErrorDiv(unsigned int lineNum)
 {
-	fprintf(stderr, "L%u: division by zero\n", lineNum);
-	return (EXIT_FAILURE);
+    fprintf(stderr, "L%u: division by zero\n", lineNum);
+    return (EXIT_FAILURE);
 }
+
 
 /**
  * handleErrorPChar - Prints pchar error messages for empty stacks
@@ -65,6 +71,6 @@ int handleErrorDiv(unsigned int lineNum)
  */
 int handleErrorPChar(unsigned int lineNum, char *message)
 {
-	fprintf(stderr, "L%u: can't pchar, %s\n", lineNum, message);
-	return (EXIT_FAILURE);
+    fprintf(stderr, "L%u: can't pchar, %s\n", lineNum, message);
+    return (EXIT_FAILURE);
 }

@@ -1,10 +1,12 @@
 #include "monty.h"
 
+
 void montyAdd(stack_t **stack, unsigned int lineNum);
 void montySub(stack_t **stack, unsigned int lineNum);
 void montyDiv(stack_t **stack, unsigned int lineNum);
 void montyMul(stack_t **stack, unsigned int lineNum);
 void montyMod(stack_t **stack, unsigned int lineNum);
+
 
 /**
  * montyAdd - Adds the top two values of alinked list.
@@ -16,15 +18,17 @@ void montyMod(stack_t **stack, unsigned int lineNum);
  */
 void montyAdd(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		setErrorToken(handleErrorShortStack(lineNum, "add"));
-		return;
-	}
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+    {
+        setErrorToken(handleErrorShortStack(lineNum, "add"));
+        return;
+    }
 
-	(*stack)->next->next->n += (*stack)->next->n;
-	montyPop(stack, lineNum);
+
+    (*stack)->next->next->n += (*stack)->next->n;
+    montyPop(stack, lineNum);
 }
+
 
 /**
  * montySub - Subtracts the second value from the top of
@@ -37,15 +41,17 @@ void montyAdd(stack_t **stack, unsigned int lineNum)
  */
 void montySub(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		setErrorToken(handleErrorShortStack(lineNum, "sub"));
-		return;
-	}
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+    {
+        setErrorToken(handleErrorShortStack(lineNum, "sub"));
+        return;
+    }
 
-	(*stack)->next->next->n -= (*stack)->next->n;
-	montyPop(stack, lineNum);
+
+    (*stack)->next->next->n -= (*stack)->next->n;
+    montyPop(stack, lineNum);
 }
+
 
 /**
  * montyDiv - Divides the second value from the top of
@@ -58,21 +64,24 @@ void montySub(stack_t **stack, unsigned int lineNum)
  */
 void montyDiv(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		setErrorToken(handleErrorShortStack(lineNum, "div"));
-		return;
-	}
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+    {
+        setErrorToken(handleErrorShortStack(lineNum, "div"));
+        return;
+    }
 
-	if ((*stack)->next->n == 0)
-	{
-		setErrorToken(handleErrorDiv(lineNum));
-		return;
-	}
 
-	(*stack)->next->next->n /= (*stack)->next->n;
-	montyPop(stack, lineNum);
+    if ((*stack)->next->n == 0)
+    {
+        setErrorToken(handleErrorDiv(lineNum));
+        return;
+    }
+
+
+    (*stack)->next->next->n /= (*stack)->next->n;
+    montyPop(stack, lineNum);
 }
+
 
 /**
  * montyMul - Multiplies the second value from the top of
@@ -85,15 +94,17 @@ void montyDiv(stack_t **stack, unsigned int lineNum)
  */
 void montyMul(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		setErrorToken(handleErrorShortStack(lineNum, "mul"));
-		return;
-	}
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+    {
+        setErrorToken(handleErrorShortStack(lineNum, "mul"));
+        return;
+    }
 
-	(*stack)->next->next->n *= (*stack)->next->n;
-	montyPop(stack, lineNum);
+
+    (*stack)->next->next->n *= (*stack)->next->n;
+    montyPop(stack, lineNum);
 }
+
 
 /**
  * montyMod - Computes the modulus of the second value from the
@@ -106,18 +117,20 @@ void montyMul(stack_t **stack, unsigned int lineNum)
  */
 void montyMod(stack_t **stack, unsigned int lineNum)
 {
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-	{
-		setErrorToken(handleErrorShortStack(lineNum, "mod"));
-		return;
-	}
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+    {
+        setErrorToken(handleErrorShortStack(lineNum, "mod"));
+        return;
+    }
 
-	if ((*stack)->next->n == 0)
-	{
-		setErrorToken(handleErrorDiv(lineNum));
-		return;
-	}
 
-	(*stack)->next->next->n %= (*stack)->next->n;
-	montyPop(stack, lineNum);
+    if ((*stack)->next->n == 0)
+    {
+        setErrorToken(handleErrorDiv(lineNum));
+        return;
+    }
+
+
+    (*stack)->next->next->n %= (*stack)->next->n;
+    montyPop(stack, lineNum);
 }

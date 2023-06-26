@@ -1,16 +1,20 @@
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 
 #define STACK 0
 #define QUEUE 1
 #define DELIMS " \n\t\a\b"
 
+
 /* GLOBAL OPCODE TOKENS */
 extern char **op_toks;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -23,10 +27,11 @@ extern char **op_toks;
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
 } stack_t;
+
 
 /**
  * struct instruction_s - opcode and its function
@@ -38,9 +43,10 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int lineNum);
+    char *opcode;
+    void (*f)(stack_t **stack, unsigned int lineNum);
 } instruction_t;
+
 
 /* PRIMARY INTERPRETER FUNCTIONS */
 void freeStack(stack_t **stack);
@@ -50,6 +56,7 @@ void freeTokens(void);
 unsigned int tokenArrLen(void);
 int runMonty(FILE *script_fd);
 void setErrorToken(int error_code);
+
 
 /* OPCODE FUNCTIONS */
 void montyPush(stack_t **stack, unsigned int lineNum);
@@ -70,9 +77,11 @@ void montyRotr(stack_t **stack, unsigned int lineNum);
 void montyStack(stack_t **stack, unsigned int lineNum);
 void montyQueue(stack_t **stack, unsigned int lineNum);
 
+
 /* CUSTOM STANDARD LIBRARY FUNCTIONS */
 char **strtow(char *str, char *delims);
 char *getInt(int n);
+
 
 /* ERROR MESSAGES & ERROR CODES */
 int handleErrorUsage(void);
@@ -85,5 +94,6 @@ int handleErrorPint(unsigned int lineNum);
 int handleErrorShortStack(unsigned int lineNum, char *op);
 int handleErrorDiv(unsigned int lineNum);
 int handleErrorPChar(unsigned int lineNum, char *message);
+
 
 #endif /* __MONTY_H__ */

@@ -1,9 +1,11 @@
 #include "monty.h"
 
+
 void montyRotl(stack_t **stack, unsigned int lineNum);
 void montyRotr(stack_t **stack, unsigned int lineNum);
 void montyStack(stack_t **stack, unsigned int lineNum);
 void montyQueue(stack_t **stack, unsigned int lineNum);
+
 
 /**
  * montyRotl - Rotates the top value of alinked list to the bottom.
@@ -12,24 +14,29 @@ void montyQueue(stack_t **stack, unsigned int lineNum);
  */
 void montyRotl(stack_t **stack, unsigned int lineNum)
 {
-	stack_t *top, *bottom;
+    stack_t *top, *bottom;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return;
 
-	top = (*stack)->next;
-	bottom = (*stack)->next;
-	while (bottom->next != NULL)
-		bottom = bottom->next;
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+        return;
 
-	top->next->prev = *stack;
-	(*stack)->next = top->next;
-	bottom->next = top;
-	top->next = NULL;
-	top->prev = bottom;
 
-	(void)lineNum;
+    top = (*stack)->next;
+    bottom = (*stack)->next;
+    while (bottom->next != NULL)
+        bottom = bottom->next;
+
+
+    top->next->prev = *stack;
+    (*stack)->next = top->next;
+    bottom->next = top;
+    top->next = NULL;
+    top->prev = bottom;
+
+
+    (void)lineNum;
 }
+
 
 /**
  * montyRotr - Rotates the bottom value of alinked list to the top.
@@ -38,24 +45,29 @@ void montyRotl(stack_t **stack, unsigned int lineNum)
  */
 void montyRotr(stack_t **stack, unsigned int lineNum)
 {
-	stack_t *top, *bottom;
+    stack_t *top, *bottom;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
-		return;
 
-	top = (*stack)->next;
-	bottom = (*stack)->next;
-	while (bottom->next != NULL)
-		bottom = bottom->next;
+    if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+        return;
 
-	bottom->prev->next = NULL;
-	(*stack)->next = bottom;
-	bottom->prev = *stack;
-	bottom->next = top;
-	top->prev = bottom;
 
-	(void)lineNum;
+    top = (*stack)->next;
+    bottom = (*stack)->next;
+    while (bottom->next != NULL)
+        bottom = bottom->next;
+
+
+    bottom->prev->next = NULL;
+    (*stack)->next = bottom;
+    bottom->prev = *stack;
+    bottom->next = top;
+    top->prev = bottom;
+
+
+    (void)lineNum;
 }
+
 
 /**
  * montyStack - Converts a queue to a stack.
@@ -64,9 +76,10 @@ void montyRotr(stack_t **stack, unsigned int lineNum)
  */
 void montyStack(stack_t **stack, unsigned int lineNum)
 {
-	(*stack)->n = STACK;
-	(void)lineNum;
+    (*stack)->n = STACK;
+    (void)lineNum;
 }
+
 
 /**
  * montyQueue - Converts a stack to a queue.
@@ -75,6 +88,6 @@ void montyStack(stack_t **stack, unsigned int lineNum)
  */
 void montyQueue(stack_t **stack, unsigned int lineNum)
 {
-	(*stack)->n = QUEUE;
-	(void)lineNum;
+    (*stack)->n = QUEUE;
+    (void)lineNum;
 }
